@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Speed</title>
+    <link rel="icon" href="icon.jpg">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Word Counter</h1>
+    <div class="container">
+        <div class="utils">
+            <p id="words">0</p>
+            <button id="clear">Cleared</button>
+        </div>
+        <textarea id="text-input" cols="50" rows="13" autofocus onkeyup="countWords(this);"></textarea>
+    </div>
+    <script>
+        const clearButton = document.getElementById('clear');
+        let textInput = document.getElementById('text-input');
+
+        clearButton.addEventListener('click', () => {
+            document.getElementById('text-input').value = "";
+            clearButton.innerHTML = 'Cleared';
+            clearButton.style.color = 'lime';
+            words.innerHTML = 0;
+            textInput.autofocus = true;
+        })
+        
+        function countWords(self) {
+            var spaces = self.value.match(/\S+/g);
+            var words = spaces ? spaces.length : 0;
+
+            document.getElementById('words').innerHTML = words;
+            clearButton.innerHTML = 'Clear';
+            clearButton.style.color = 'red';
+
+            if (textInput.value == "") {
+                clearButton.innerHTML = 'Cleared';
+                clearButton.style.color = 'lime';
+            }
+        }
+    </script>
+</body>
+</html>
